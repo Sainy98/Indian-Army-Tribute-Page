@@ -153,8 +153,8 @@ background-color: black;
 
 </style>
 </head>
-<body class="main-container" id="play">
-<audio loop autoplay id="audio">
+<body class="main-container">
+<audio id="myAudio" autoplay loop>
     <source src="https://raw.githubusercontent.com/Sainy98/Indian-Army-Tribute-Page/main/Aye%20Mere%20Watan.mp3" type="audio/mpeg">
     <source src="https://raw.githubusercontent.com/Sainy98/Indian-Army-Tribute-Page/main/Aye%20Mere%20Watan.mp3" type="audio/ogg">   
 </audio>
@@ -351,25 +351,14 @@ setTimeout(() => {
 //  const clonedList = heroListContent.cloneNode(true);
 // heroListContent.parentNode.appendChild(clonedList);
 
-
-    document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('audio');
-            var playButton = document.getElementById('play');
-
-            // Play the audio when the button is clicked
-            playButton.addEventListener('click', function() {
-                audio.muted = false; // Unmute the audio
-                audio.play(); // Start playing the audio
-            });
-
-            // Optional: Automatically play the audio on page load after user interaction
-            document.body.addEventListener('touchstart', function() {
-                audio.muted = false;
-                audio.play();
-            });
-        });
-    
-
+document.addEventListener('click', function() {
+            var audio = document.getElementById('myAudio');
+            if (audio.paused) {
+                audio.play().catch(function(error) {
+                    console.log('Audio play was prevented:', error);
+                });
+            }
+        }, { once: true });
 
 
 const sherList = document.getElementById('hero-story');
