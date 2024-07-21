@@ -129,11 +129,11 @@ padding: 5px 0;
             color: rgb(0, 255, 0);
         }
         #hero-story{
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         #hero-story p{
-margin-bottom: 150px;
+margin-bottom: 100px;
 font-weight: 300;
 background-color: black;
     box-shadow: 0px 3px 7px 0px #329500;
@@ -150,7 +150,9 @@ background-color: black;
   width: 70px;
   height: 70px;
   }
-
+blockquote{
+    color: aliceblue;
+}
 </style>
 </head>
 <body class="main-container">
@@ -172,14 +174,16 @@ background-color: black;
         Jinhone apne lahoo se hamari dharti ko sajayi thi. </p>
 
         <img src="https://media.giphy.com/media/zmlvEzIhIQwRG/giphy.gif" height="300px">
-    <p class="white" id="msg2">15 August se pehle pahucha do is paigaam ko,
+    <p class="white" id="msg2">
+        15 August se pehle pahucha do is paigaam ko,
         Apne doston aur rishtedaron ko. <br/>
         
         Hamesha rakhna yaad un veeron ki kahani,
         Jinhone is desh ke khatir ki qurbani. <br/>
         
         Woh jinhone hanste-hanste jaan lutayi,
-        Unki yaadon mein hai aazadi ki parchayi.</p>
+        Unki yaadon mein hai aazadi ki parchayi. <br/>
+    </p>
         
         <h2>Bharat Ke Sher</h2>
         <div id="hero-list-container">
@@ -193,6 +197,14 @@ background-color: black;
                
             </div>  
         </div>
+
+        <blockquote >
+            Hum shaheed hue hain, par shikva nahi hai,<br>
+            Sarhad pe har pal maut ka dhokha nahi hai.<br>
+            Mitti ke liye apni jaan de di,<br>
+            Mitti ka karz ada karna asaan nahi hai.
+        </blockquote>
+        
          
         <div class="share-btn">           
             <img src="https://static.vecteezy.com/system/resources/previews/012/162/809/original/whatsapp-logo-3d-render-free-png.png" alt="share btn" id="whatsapp-btn"></img>
@@ -383,15 +395,19 @@ sher.forEach((soldier, index) => {
 });
 
 const msg = document.getElementById("msg2").textContent;
+const pageURL = encodeURIComponent('https://vande-matram.netlify.app'); // The URL you want to share
+
 document.getElementById('whatsapp-btn').addEventListener('click', function(){
-    const whatsappURL =  `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+    const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}%20${pageURL}`;
     window.open(whatsappURL, '_blank');
-})
+});
 
 document.getElementById('facebook-btn').addEventListener('click', function() {
- const facbookURL= `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(msg)}`;
- window.open(facebookURL, '_blank');
-})
+    const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
+    window.open(facebookURL, '_blank');
+});
+
+
 
     </script>
 </body>
