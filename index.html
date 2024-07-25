@@ -249,7 +249,7 @@ const heroes = [
 ];
 const sher = [
     {
-        img: "https://scontent.flko13-1.fna.fbcdn.net/v/t39.30808-6/452349395_122139846434268699_6736564971765783772_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=KOtDq_ST0zYQ7kNvgFlOX0S&_nc_ht=scontent.flko13-1.fna&oh=00_AYDsjxiPb2pBjnQwkYjzTelc3d7qJv3w9IcI7TOBrdMWcA&oe=66A15E93",
+        img: "https://www.dainikreporters.com/wp-content/uploads/2021/08/Captain_Vikram_Batra__Biography_In_English__1629972303_45631.jpg",
         name: "Captain Vikram Batra",
         award: "Marnavpraant Param Vir Chakra se nawaze gaye.",
         story: "Captain Batra ne ek ghayal sanik ko bachate hue apani adbhut sahas ka parichay diya khud ghayal hone ke bavajood, unhonne apne sathi ko suraksha tak le gaye, jo unaki apne sathi ke prati atulania prem ko dikhaata hai unki kahi hui baaten aaj bhi sabhi ke dilon mein zinda hain, jo naye sainik ko prerit karti hain jaise unhonne kaha tha, ya to main tiranga laharaakar aunga, ya phir usamen lapetakar aunga, lekin main wapas aaunga jarura"
@@ -363,14 +363,35 @@ setTimeout(() => {
 //  const clonedList = heroListContent.cloneNode(true);
 // heroListContent.parentNode.appendChild(clonedList);
 
-document.addEventListener('scroll', function() {
-            var audio = document.getElementById('myAudio');
-            if (audio.paused) {
-                audio.play().catch(function(error) {
-                    console.log('Audio play was prevented:', error);
-                });
-            }
-        }, { once: true });
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('myAudio');
+
+    // Function to play audio
+    function playAudio() {
+        if (audio.paused) {
+            audio.play().catch(function(error) {
+                console.log('Audio play was prevented:', error);
+            });
+        }
+    }
+    document.addEventListener('touchmove', function(event) {
+        playAudio();
+        console.log('Touch moved', event.touches);
+    });
+
+    // Add touch event listener
+    document.addEventListener('touchstart', function() {
+        playAudio();
+    }, { once: true }); // `once: true` ensures this runs only once
+
+    // Add click event listener as fallback
+    document.addEventListener('click', function() {
+        playAudio();
+    }, { once: true });
+
+
+});
+
 
 
 const sherList = document.getElementById('hero-story');
